@@ -1,24 +1,34 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app/RandomWords.dart';
 import 'package:english_words/english_words.dart';
+
+class RandomWords extends StatefulWidget {
+  @override
+  createState() => new RandomWordsState();
+}
 
 class RandomWordsState extends State<RandomWords> {
   final _suggestions = <WordPair>[];
+
   final _saved = new Set<WordPair>();
 
   final _biggerFont = const TextStyle(fontSize: 18.0);
 
   @override
   Widget build(BuildContext context) {
-    return new Scaffold (
+    return new Scaffold(
       appBar: new AppBar(
         title: new Text('Startup Name Generator'),
         actions: <Widget>[
+          new IconButton(icon: new Icon(Icons.edit), onPressed: _pushNewPage),
           new IconButton(icon: new Icon(Icons.list), onPressed: _pushSaved),
         ],
       ),
       body: _buildSuggestions(),
     );
+  }
+
+  void _pushNewPage() {
+    Navigator.of(context).pushNamed('/login');
   }
 
   Widget _buildSuggestions() {
@@ -40,7 +50,7 @@ class RandomWordsState extends State<RandomWords> {
             // ...接着再生成10个单词对，然后添加到建议列表
             _suggestions.addAll(generateWordPairs().take(10));
           }
-          return _buildRow(_suggestions[index]);
+        return _buildRow(_suggestions[index]);
         });
   }
 
@@ -66,12 +76,13 @@ class RandomWordsState extends State<RandomWords> {
       },
     );
   }
+
   void _pushSaved() {
     Navigator.of(context).push(
       new MaterialPageRoute(
         builder: (context) {
           final tiles = _saved.map(
-                (pair) {
+            (pair) {
               return new ListTile(
                 title: new Text(
                   pair.asPascalCase,
@@ -80,12 +91,10 @@ class RandomWordsState extends State<RandomWords> {
               );
             },
           );
-          final divided = ListTile
-              .divideTiles(
+          final divided = ListTile.divideTiles(
             context: context,
             tiles: tiles,
-          )
-              .toList();
+          ).toList();
           return new Scaffold(
             appBar: new AppBar(
               title: new Text('Saved Suggestions'),

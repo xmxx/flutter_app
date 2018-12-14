@@ -67,3 +67,8 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.io/custom-fonts/#from-packages
+  assets:
+  - images/yongche.png
+  - images/order_option_transfer.png
+  - images/order_option_car.png
+  - images/order_option_other.png
