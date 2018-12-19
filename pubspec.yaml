@@ -20,10 +20,16 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^0.1.2
   english_words: ^3.1.2
+  json_annotation: ^1.1.0
+  dio: ^1.0.0 #网络请求
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
+
+
+  build_runner: ^0.10.2
+  json_serializable: ^1.2.0
 
 
 # For information on the generic Dart part of this file, see the
@@ -68,7 +74,4 @@ flutter:
   # For details regarding fonts from package dependencies,
   # see https://flutter.io/custom-fonts/#from-packages
   assets:
-  - images/yongche.png
-  - images/order_option_transfer.png
-  - images/order_option_car.png
-  - images/order_option_other.png
+  - images/
